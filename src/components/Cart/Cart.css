@@ -1,0 +1,25 @@
+.main-btn{
+    background-color: goldenrod;
+    width: 150px;
+    height: 30px;
+    border: 1px solid gold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-btn:hover{
+ box-shadow: lawngreen;
+}
+
+.text-design{
+
+    margin-left: 40px;
+    padding: 20px;
+}
+.items-design{
+    background-color: greenyellow;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+}

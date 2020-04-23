@@ -1,13 +1,14 @@
 import React from 'react';
-
+import './Cart.css'
 const Cart = (props) => {
     const cart=props.cart
-    console.log(props)
+    //console.log(props)
 
    let total =0;
    for(let i=0; i<cart.length; i++){
        const product=cart[i];
-       total= total+product.price;
+       total= total+product.price* product.quantity ;
+
    }
  
      let shipping=0;
@@ -29,14 +30,16 @@ const Cart = (props) => {
      }
 
     return (
-        <div>
-                <h4>order summary</h4>
-               <p>Items Ordered:{cart.length}</p>
-               <p>Items:${formateNumber(total)}</p>
-               <p><small>shipping cost:{formateNumber(shipping)}</small></p>
-                <p>Tax:{formateNumber(tax)}</p>
-                <p>Total Price:{formateNumber(total+shipping+tax)}</p>
-    
+        <div className="text-design">
+                <h3>Order Summary</h3>
+               <p className="items-design">Items Ordered:{cart.length}</p>
+               <p><b>Items Cost: $</b>{formateNumber(total)}</p>
+               <p>Shipping Cost: ${formateNumber(shipping)}</p>
+                <p>Tax: ${ formateNumber(tax)}</p>
+                <p>Total Price: ${formateNumber(total+shipping+tax)}</p>
+               {
+                   props.children
+               }
         </div>
     );
 };
