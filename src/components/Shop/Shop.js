@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
     const [products,setProducts]=useState(first10);
 
     const[cart,setCart]=useState([]);
-
+   console.log(cart);
    useEffect(()=>{
         const saveCart= getDatabaseCart()
         const productKeys= Object.keys(saveCart)
