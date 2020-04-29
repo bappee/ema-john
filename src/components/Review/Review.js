@@ -8,12 +8,17 @@ import './Review.css'
 import Cart from '../Cart/Cart';
 
 import happyImage from '../../images/giphy.gif'
+import { Link } from 'react-router-dom';
+import { useAuth } from '../Login/useAuth';
 
 const Review = () => {
 
     const [cart,setCart]= useState([]);
+    const [orderPlaced,setOrederPlaced]= useState(false)
 
-   const [orderPlaced,setOrederPlaced]= useState(false)
+    //for change button by loginwise
+    const auth= useAuth();
+
     const handlePlaceOrder=()=>{
        
         setOrederPlaced(true);
@@ -69,12 +74,21 @@ const Review = () => {
             {
                 Thankyou
             }
+
+            {
+                !cart.length && <h1>Your Cart is empty.Please <a href="/">Shop more</a> </h1>
+            }
             
             </div>
              <div className="cart-container">
              <Cart cart={cart}> 
-             <button onClick={handlePlaceOrder} className="main-btn">Place Order</button>
+            <Link to ="/shipment"> 
+            {
+                auth.user ?  <button  className="main-btn">Proceed checkout</button>
+                :  <button className="main-btn">Login To Shipment</button>
        
+            }
+                </Link>
              </Cart>
           </div>
 

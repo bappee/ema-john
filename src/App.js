@@ -13,11 +13,25 @@ import Review from './components/Review/Review';
 import Inventory from './components/Inventory/Inventory';
 import Notfound from './components/Notfound/Notfound';
 import Productdetails from './components/Productdetails/Productdetails';
+import Login from './components/Login/Login';
+import { AuthContextProvider } from './components/Login/useAuth';
+import Shipment from './components/Shipment/Shipment';
+import { PrivateRoute } from './components/Shipment/shipPermission';
+
+
+
 
   
+
+
 function App() {
+
   return (
     <div >
+   
+   <AuthContextProvider>
+     
+
      <Header></Header>
 
      <Router>
@@ -41,6 +55,14 @@ function App() {
           <Route path="/product/:productKey">
             <Productdetails></Productdetails>
           </Route>
+          <Route path="/login">
+            <Login></Login>
+          </Route>
+
+          <PrivateRoute path ="/shipment">
+            <Shipment></Shipment>
+          </PrivateRoute>
+
 
         <Route path="*">
          <Notfound></Notfound>
@@ -50,8 +72,7 @@ function App() {
        </Switch>
      </Router>
      
-     
-      
+     </AuthContextProvider>
     </div>
   );
 }

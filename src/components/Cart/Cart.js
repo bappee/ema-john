@@ -1,8 +1,15 @@
 import React from 'react';
 import './Cart.css'
+import { useAuth } from '../Login/useAuth';
+
+
 const Cart = (props) => {
     const cart=props.cart
-    console.log(props)
+    // const user= useContext(UserContext);
+
+    const auth = useAuth()
+    console.log(auth.user)
+    
 
    let total =0;
    for(let i=0; i<cart.length; i++){
@@ -40,6 +47,7 @@ const Cart = (props) => {
                {
                    props.children
                }
+               <h1>{}</h1>
         </div>
     );
 };
